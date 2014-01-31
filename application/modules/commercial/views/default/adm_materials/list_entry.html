@@ -1,0 +1,41 @@
+<a class="awesome" href="{site_url}commercial">« Главная</a>
+<a class="awesome" href="{site_url}commercial/adm_materials/add">Добавить запись</a>
+<a class="awesome" href="{site_url}commercial/adm_materials/add_category">Добавить категорию</a><br /><br />
+
+<p class="hr">Категории</p>
+<table class="zebra" width="75%">
+	<tbody>
+		<th><strong>Title</strong></th>
+		<th><strong>Теги</strong></th>
+		<th>&nbsp;</th>
+	</tbody>
+	{categories}
+	<tr>
+		<td><a target="blank" href="{site_url}materials/category/{id}">{title}</a></td>
+		<td>{tags}</td>
+		<td width="20%"><a class="small awesome" href="{site_url}commercial/adm_materials/edit_category/{id}">Редактировать</a>&nbsp;<a class="red small awesome" href="{site_url}commercial/adm_materials/delete_category/{id}">X</a></td>
+	</tr>
+	{/categories}
+</table>
+
+<p class="hr">Записи</p>
+<table class="zebra" width="100%">
+	<tbody>
+		<th>Title</th>
+		<th>Страница</th>
+<!--
+		<th>Категория</th>
+-->
+		<th>&nbsp;</th>
+	</tbody>
+	{entries}
+	<tr>
+		<td>{title}</td>
+		<td><a target="blank" href="{site_url}materials/view/{page}">{page}</a></td>
+<!--
+		<td><a target="blank" href="{site_url}materials/category/{category}">{category_title}</a></td>
+-->
+		<td width="20%"><a class="small awesome" href="{site_url}commercial/adm_materials/edit/{id}">Редактировать</a>&nbsp;<a class="red small awesome" href="{site_url}commercial/adm_materials/delete_entry/{id}">X</a></td>
+	</tr>
+	{/entries}
+</table>

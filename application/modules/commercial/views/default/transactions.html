@@ -1,0 +1,32 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+<?php if($this->users->auth_data['is_admin']) : ?>
+	<form action="{site_url}commercial/redirect_to_transactions" method="post" accept-charset="utf-8">
+		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+		Логин: <input type="text" name="user_login" />&nbsp;<input class="button" type="submit" name="submit" value="Просмотр" /><br /><br />
+	</form>
+<?php endif; ?>
+
+{pagination}
+<table width="100%" class="zebra">
+	<tbody>
+		<th>Операция</th>
+		<th>№ счета</th>
+		<th>Дата</th>
+		<th>Сумма</th>
+		<th>Описание</th>
+		<th>Сальдо</th>
+	</tbody>
+	{transactions_list}
+	<tr>
+		<td><img src="{base_url}themes/system/commercial/images/{action_img}">{action}</td>
+		<td><a href="{site_url}commercial/client/invoice_info/{invoice_id}">{invoice_id}</a></td>
+		<td>{date}</td>
+		<td>{change} {currency_symbol}</td>
+		<td>{description}</td>
+		<td>{saldo} {currency_symbol}</td>
+	</tr>
+	{/transactions_list}
+
+</table>
+{pagination}

@@ -1,0 +1,49 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<a class="awesome" href="{site_url}commercial/adm_ftp_accounts">« Список аккаунтов</a>
+
+<p class="hr">Новый ftp аккаунт</p>
+<form action="{site_url}commercial/adm_ftp_accounts/add" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+	
+	<table width="100%" class="zebra">
+		
+		<tr>
+			<td>{lang_dedicated_server}:</td>
+			<td>
+				<select name="ds_id">
+					<option value="0" selected="selected">{lang_adm_servers_local_server}</option>
+					{ds_list}
+					<option value="{ds_id}">{ds_name}</option>
+					{/ds_list}
+
+				 </select>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>Клиент (логин):</td>
+			<td><input type="text" name="user_name"/></td>
+		</tr>
+		
+		<tr>
+			<td>Хост: </td>
+			<td><input type="text" name="host"/></td>
+		</tr>
+		
+		<tr>
+			<td>Пароль: </td>
+			<td><input type="text" name="password"/></td>
+		</tr>
+		
+		<tr>
+			<td>Директория на сервере: </td>
+			<td><input type="text" name="dir"/></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2">Логин FTP будет сгенерирован автоматически</td>
+		</tr>
+
+	</table>
+	<p align="center"><input class="button" type="submit" name="submit" value="Создать" /></p>
+</form>

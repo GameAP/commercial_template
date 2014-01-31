@@ -1,0 +1,23 @@
+{pagination}
+<table width="100%" class="zebra">
+	<thead>
+		<th>№ счета</th>
+		<th>Дата</th>
+		<th>Статус</th>
+		<th>Сумма</th>
+		<th></th>
+	</thead>
+{invoices_list}
+	<tr>
+		<td>{invoice_id}</td>
+		<td>{date}</td>
+		<td>{invoice_status}</td>
+		<td>{amount} {currency_symbol}</td>
+		<td>
+			<a class="small awesome" href="{site_url}commercial/client/invoice_info/{invoice_id}">Просмотр</a>
+		</td>
+
+	</tr>
+{/invoices_list}
+</table>
+{pagination}

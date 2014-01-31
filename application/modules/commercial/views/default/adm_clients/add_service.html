@@ -1,0 +1,49 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<a class="small awesome" href="{site_url}commercial/adm_clients">« Список клиентов</a>
+
+<p class="hr">Выписать счет</p>
+<form action="{site_url}commercial/adm_clients/add_service/{user_id}" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+	
+	<table width="100%" class="zebra">
+		
+		<tr>
+			<td>Имя услуги:</td>
+			<td><input type="text" name="name" /></td>
+		</tr>
+		
+		<tr>
+			<td widt="20%">Статус: </td>
+			<td>
+				<select name="status">
+					<option value="active">Активен</option>
+					<option value="wait_pay">Ожидает оплаты</option>
+					<option value="wait_act">Ожидает активации</option>
+					<option value="freeze">Заморожен</option>
+				</select>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>Стоимость: </td>
+			<td><input type="text" name="price" size="10"/> {currency_symbol}</td>
+		</tr>
+		
+		<tr>
+			<td>Истекает:</td>
+			<td><input type="text" name="date_overdue" value="{date}"/><br />Пример: 29-06-2013 12:32</td>
+		</tr>
+		
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+		
+		<tr>
+			<td>Выписать счет на оплату:</td>
+			<td><input type="checkbox" name="add_invoice" value="accept" checked="checked" /></td>
+		</tr>
+
+	</table>
+	<p align="center"><input class="button" type="submit" name="submit" value="Выписать" /></p>
+</form>

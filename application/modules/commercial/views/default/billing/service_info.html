@@ -1,0 +1,31 @@
+<a class="awesome" href="{site_url}commercial/client/services">« Вернуться к списку услуг</a>
+<br /><br />
+<table width="100%" class="zebra">
+	<tr>
+		<td>Название:</td>
+		<td>{name}</td>
+	</tr>
+	<tr>
+		<td>Цена:</strong></td>
+		<td>{cost} руб.</strong></td>
+	</tr>
+	<tr>
+		<td>Статус:</strong></td>
+		<td>{status}</strong></td>
+	</tr>
+	<tr>
+		<td>Игровой сервер:</strong></td>
+		<td>{game_server}</strong></td>
+	</tr>
+	<tr>
+		<td>Создан:</strong></td>
+		<td>{date_create}</strong></td>
+	</tr>
+	<tr>
+		<td>Истекает:</strong></td>
+		<td>{date_overdue}</strong></td>
+	</tr>
+</table>
+<?php if($this->billing->services_list[0]['invoice_id']): ?>
+<a class="green awesome" href="{site_url}commercial/client/pay_invoice/{invoice_id}">Оплатить услугу</a>
+<?php endif; ?>

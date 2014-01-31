@@ -1,0 +1,42 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<a class="awesome" href="{site_url}commercial/adm_ftp_accounts">« Список аккаунтов</a>
+<br /><br />
+<p class="hr">Редактирование аккаунта</p>
+<form action="{site_url}commercial/adm_ftp_accounts/edit/{ftp_id}" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+	
+	<table width="100%" class="zebra">
+		
+		<tr>
+			<td>{lang_dedicated_server}:</td>
+			<td>{ds_name}</td>
+		</tr>
+		
+		<tr>
+			<td>Логин:</td>
+			<td>{login}</td>
+		</tr>
+		
+		<tr>
+			<td>Клиент:</td>
+			<td><input type="text" name="user_name" value="{user_name}"/></td>
+		</tr>
+		
+		<tr>
+			<td>Хост:</td>
+			<td><input type="text" name="host" value="{host}"/></td>
+		</tr>
+		
+		<tr>
+			<td>Пароль: </td>
+			<td><input type="text" name="password"/><br />Оставьте пустым, чтобы не изменять</td>
+		</tr>
+		
+		<tr>
+			<td>Директория на сервере: </td>
+			<td><input type="text" name="dir" value="{dir}"/></td>
+		</tr>
+
+	</table>
+	<p align="center"><input class="button" type="submit" name="submit" value="{lang_save}" /></p>
+</form>

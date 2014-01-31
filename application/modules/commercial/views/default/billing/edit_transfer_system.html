@@ -1,0 +1,69 @@
+<a class="awesome" href="{site_url}commercial/adm_transfer_systems">« Вернуться</a>
+<h2>Новая платежная система</h2>
+
+<form action="{site_url}commercial/adm_transfer_systems/edit/{id}" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+
+	<table width="100%" class="zebra">
+		
+	<tr>
+		<td width="30%">Название платежной системы:</td>
+		<td><input style="width: 80%" type="text" name="name" value="{name}" /></td>
+	</tr>
+	
+	<tr>
+		<td>URL ссылка на логотип платежной системы:</td>
+		<td><input style="width: 80%" type="text" name="logotype" value="{logotype}" /></td>
+	</tr>
+	
+	<tr>
+		<td>Описание платежной системы:</td>
+		<td><input style="width: 80%" type="text" name="description" value="{description}" /></td>
+	</tr>
+
+	</table>
+	
+	<p class="hr">Данные платежной системы</p>
+	<table width="100%" class="zebra" id="transfer_data">
+	
+		<tr>
+			<td colspan="5"><a class="small awesome" href="#" onclick="add_new_item('transfer_data'); return false;" id="add">Добавить</a></td>
+		</tr>
+
+		<tr>
+			<th>Переменная</th>
+			<th>Значение</th>
+			<th>Удалить</th>
+		</tr>
+		
+		{transfer_data_list}
+		<tr>
+			<td>{tr_variable}</td>
+			<td>{tr_value}</td>
+			<td align="center"><input type="checkbox" name="tr_delete[{tr_id}]" value="accept" /></td>
+		</tr>
+		{/transfer_data_list}
+		
+	</table>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$('#hide').hide();
+			$('#selected').toggle(function(){
+			$('#hide').fadeIn(800);
+			$(this).html('');}, function(){
+			$('#hide').fadeOut(800);
+			$(this).html('');});
+		})
+		
+		function add_new_item(id) {
+			if(id == 'transfer_data') {
+				$('<tr><td><input type="text" name="tr_variable[]" /></td><td><input type="text" name="tr_value[]" /></td><td>&nbsp;</td></tr>').fadeIn('slow').appendTo('#transfer_data');
+			}
+		}
+	</script>
+	
+	<p align="center"><input class="button" type="submit" name="submit" value="Сохранить" /></p>
+
+</form>

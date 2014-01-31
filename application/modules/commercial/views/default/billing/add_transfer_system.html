@@ -1,0 +1,28 @@
+<a class="awesome" href="{site_url}commercial/adm_transfer_systems">« Вернуться</a>
+<h2>Новая платежная система</h2>
+
+<form action="{site_url}commercial/adm_transfer_systems/add" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+
+	<table width="100%" class="zebra">
+		
+	<tr>
+		<td width="30%">Название платежной системы:</td>
+		<td><input style="width: 80%" type="text" name="name" /></td>
+	</tr>
+	
+	<tr>
+		<td>URL ссылка на логотип платежной системы:</td>
+		<td><input style="width: 80%" type="text" name="logotype" /></td>
+	</tr>
+	
+	<tr>
+		<td>Описание платежной системы:</td>
+		<td><input style="width: 80%" type="text" name="description" /></td>
+	</tr>
+
+	</table>
+	
+	<p align="center"><input class="button" type="submit" name="submit" value="Добавить" /></p>
+
+</form>

@@ -1,0 +1,25 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<script type="text/javascript" language="javascript" src="{site_url}themes/system/ckeditor/ckeditor.js"></script>
+<a class="awesome" href="{site_url}commercial/tickets">« Вернуться</a>
+
+<form action="{site_url}commercial/tickets/add/" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+	<table width="100%" class="zebra">
+			<tr>
+				<td>Заголовок</td>
+				<td><input style="width: 75%" type="text" name="title" /></td>
+			</tr>
+			
+			<tr>
+				<td>Сообщение</td>
+				<td><textarea style="height: 50px" name="message"></textarea></td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">&nbsp;</td>
+			</tr>
+			
+	</table>
+
+	<p align="center"><input class="button" type="submit" name="submit" value="Создать" /></p>
+</form>

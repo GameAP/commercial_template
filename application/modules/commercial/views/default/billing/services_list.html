@@ -1,0 +1,42 @@
+<a class="awesome" href="{site_url}commercial/order">Заказать</a>
+
+<p class="hr">Основные услуги</p>
+
+<table width="100%" class="zebra">
+	<tbody>
+		<th>Название</th>
+		<th>Состояние</th>
+		<th>Дата создания</th>
+		<th>Дата окончания</th>
+		<th>Сумма</th>
+		<th>&nbsp;</th>
+	</tbody>
+{services_list}
+	<tr>
+		<td>{name}</td>
+		<td>{status}</td>
+		<td>{date_create}</td>
+		<td>{date_overdue}</td>
+		<td>{cost} руб.</td>
+		<td><a class="small awesome" href="{site_url}commercial/client/services/{service_id}">Просмотр</a>&nbsp;</td>
+	</tr>
+{/services_list}
+</table>
+
+<p class="hr">FTP аккаунты</p>
+<table width="50%" class="zebra">
+	<tbody>
+		<th>Хост</th>
+		<th>Логин</th>
+		<th>Пароль</th>
+		<th>&nbsp;</th>
+	</tbody>
+{ftp_accounts_list}
+	<tr>
+		<td>{host}</td>
+		<td>{login}</td>
+		<td>{password}</td>
+		<td><a class="small awesome" href="{site_url}commercial/client/change_ftp_password/{account_id}">Сменить пароль</a>&nbsp;</td>
+	</tr>
+{/ftp_accounts_list}
+</table>

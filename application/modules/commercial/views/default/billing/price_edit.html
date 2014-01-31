@@ -1,0 +1,88 @@
+<a class="awesome" href="{site_url}commercial/adm_prices">« Цены и тарифы</a>
+
+<form action="{site_url}commercial/adm_prices/edit_price/{price_id}" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+	<p class="hr">Основные параметры</p>
+	<table width="100%" class="zebra">
+		<tr>
+			<td width="45%">Название:</td>
+			<td><input type="text" name="name" value="{name}" /></td>
+		</tr>
+		<tr>
+			<td>Цена за единицу:</td>
+			<td><input type="text" name="price_per_unit" value="{price_per_unit}" size="10"/> {currency_symbol}</td>
+		</tr>
+		<tr>
+			<td>Тип зависимости:</td>
+			<td>{type_depending}</td>
+		</tr>
+		<tr>
+			<td>Значения:</td>
+			<td><input type="text" name="values" value="{values}" size="10"/></td>
+		</tr>
+
+	</table>
+	
+	<p class="hr">Соседние цены</p>
+	<span class="description">[ Для добавления значений к соседним ценам. Записывается аналогично полю "Цена за единицу". Например, таким образом можно увеличить цену за слот в зависимости от FPS ]</span>
+	
+	<table width="100%" class="zebra" id="neighbors">
+		{neighbors}
+		<tr>
+			<td>{neighbor_name}</td>
+			<td><input type="text" name="neighbor_price[{neighbor_id}]" value="{neighbor_value}"/> {currency_symbol}</td>
+		</tr>
+		{/neighbors}
+	</table>
+	
+	
+	<p class="hr">Зависимости</p>
+	
+	<span class="description">[ Значение, которое выберет покупатель будет записано как значение определенного алиаса или параметра конфигурации. Например, за максимальное количество игроков отвечает алиас с именем maxplayers. ]</span>
+	<table width="100%" class="zebra" id="depending">
+	
+		<tr>
+			<td colspan="5"><a class="small awesome" href="#" onclick="add_new_item('depending'); return false;" id="add">Добавить</a></td>
+		</tr>
+
+		<tr>
+			<th>Имя</th>
+			<th>Элемент</th>
+			<th>Имя зависимого элемента</th>
+			<th>Значение</th>
+			<th>Удалить</th>
+		</tr>
+		
+		{depending_list}
+		<tr>
+			<td>{dep_name}</td>
+			<td>{dep_eltype}</td>
+			<td>{dep_elname}</td>
+			<td>{dep_value}</td>
+			<td align="center"><input type="checkbox" name="dep_delete[{dep_id}]" value="accept"  /></td>
+		</tr>
+		{/depending_list}
+		
+	</table>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$('#hide').hide();
+			$('#selected').toggle(function(){
+			$('#hide').fadeIn(800);
+			$(this).html('');}, function(){
+			$('#hide').fadeOut(800);
+			$(this).html('');});
+		})
+		
+		function add_new_item(id) {
+			if(id == 'depending') {
+				$('<tr><td><input type="text" name="dep_name[]" /></td><td><select name="dep_eltype[]"><option value="cfg">Конфиг. файл</option><option value="alias">Алиас</option></select></td><td><input type="text" name="dep_elname[]" /></td><td><input type="text" name="dep_value[]" /></td><td align="center"><input type="checkbox" name="dep_delete[]" value="accept"  /></td></tr>').fadeIn('slow').appendTo('#depending');
+			}
+		}
+	</script>
+	
+	<p align="center"><input class="button" type="submit" name="submit" value="Сохранить" /></p>
+
+</form>

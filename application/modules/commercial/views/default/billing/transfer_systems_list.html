@@ -1,0 +1,16 @@
+<a class="awesome" href="{site_url}commercial">« На главную модуля</a>
+<a class="awesome" href="{site_url}commercial/adm_transfer_systems/add">Добавить плажежную систему</a>
+
+<p class="hr">Выберите платежную систему</p>
+<table class="zebra" width="100%">
+	<tbody>
+		<th width="75%">Название</th>
+		<th>&nbsp;</th>
+	</tbody>
+	{transfer_systems_list}
+	<tr>
+		<td>{name}</td>
+		<td><a class="small awesome" href="{site_url}commercial/adm_transfer_systems/edit/{id}">Редактировать</a>&nbsp;<a class="small red awesome" href="{site_url}commercial/adm_transfer_systems/delete/{id}">X</a></td>
+	</tr>
+	{/transfer_systems_list}
+</table>

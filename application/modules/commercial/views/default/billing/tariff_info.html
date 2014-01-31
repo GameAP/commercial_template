@@ -1,0 +1,59 @@
+<!--
+<a class="small awesome" href="{site_url}commercial">« На главную модуля</a>
+-->
+<a class="awesome" href="{site_url}commercial/adm_prices">« Цены и тарифы</a>
+
+<p class="hr">Информация о тарифе</p>
+<table width="25%" class="zebra">
+	<tr>
+		<td>Игра:</td>
+		<td>{game_code}</td>
+	</tr>
+	<tr>
+		<td>Базовая цена:</td>
+		<td>{base_price} руб.</td>
+	</tr>
+</table>
+<p><a class="small awesome" href="{site_url}commercial/adm_prices/edit_tariff/{tariff_id}">Редактировать</a></p>
+
+<p class="hr">Цены</p>
+
+<table width="100%" class="zebra">
+	<tr>
+		<td><strong>Название</strong></td>
+		<td><strong>Цена за единицу</strong></td>
+		<td><strong>Тип зависимости</strong></td>
+		<td><strong>Значения</strong></td>
+		<td></td>
+	</tr>
+{prices_list}
+	<tr>
+		<td>{name}</td>
+		<td>{price_per_unit}</td>
+		<td>{type_depending}</td>
+		<td>{values}</td>
+		<td>
+			<a class="small awesome" href="{site_url}commercial/adm_prices/edit_price/{id}">Редактировать</a>&nbsp;<a class="red small awesome" href="{site_url}commercial/adm_prices/delete_price/{id}">X</a>
+		</td>
+
+	</tr>
+{/prices_list}
+	<form action="{site_url}commercial/adm_prices/add_price/{tariff_id}" method="post" accept-charset="utf-8">
+		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+		<tr>
+			<td><input type="text" name="name" size="10"/></td>
+			<td><input type="text" name="price_per_unit" size="10"/> руб.*</td>
+			<td>
+				<select name="type_depending">
+					<option value="range">Диапазон (1-32)</option>
+					<option value="list">Список (1,2,4,n)</option>
+					<option value="one">Одно значение</option>
+				 </select>
+			</td>
+			<td><input type="text" name="values" size="15"/></td>
+			<td><input type="submit" name="submit" value="Добавить" /></td>
+		</tr>
+	</form>
+</table>
+
+<p>*Для установки отдельной цены на каждое значение из списка нужно ввести в поле значения через запятую, цены и значения будут автоматически сопоставлены. (Только для списка).</p>

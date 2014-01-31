@@ -1,0 +1,34 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+<a class="awesome" href="{site_url}commercial/adm_clients{user_link}">« Вернуться</a>
+<br /><br />
+
+<form action="{site_url}/commercial/adm_clients/edit_invoice/{invoice_id}/{user_id}" method="post" accept-charset="utf-8">
+<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+	
+	<table width="100%" bolder="1" class="zebra">
+		<tr>
+			<td>№ счета:</td>
+			<td>{invoice_id}</td>
+		</tr>
+		<tr>
+			<td>Название счета:</td>
+			<td><input type="text" name="type_payment" value="{type_payment}"/></td>
+		</tr>
+		<tr>
+			<td>Сумма:</td>
+			<td><input type="text" name="amount" value="{amount}"/> {currency_symbol}</td>
+		</tr>
+		<tr>
+			<td>Счет оплачен:</td>
+			<td>{checkbox_status}<br />Примечание! Смена статуса не влияет на баланс клиента.</td>
+		</tr>
+		<tr>
+			<td>Выставлен:</td>
+			<td>{date}</td>
+		</tr>
+	</table>
+	
+	<p align="center"></p><input class="button" type="submit" name="edit_ds" value="{lang_save}" /></p>
+	
+</form>

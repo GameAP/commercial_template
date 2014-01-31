@@ -1,0 +1,50 @@
+<form action="{site_url}auth/in" method="post" accept-charset="utf-8">
+<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+
+<p><strong>Ваш заказ</strong></p>
+<table width="100%" cellspacing="10">
+<tr>
+	<td width="20%">Игра:</td>
+	<td>{game}</td>
+</tr>
+
+{parameters}
+<tr>
+	<td width="20%">{name}:</td>
+	<td>{value}</td>
+</tr>
+{/parameters}
+<tr>
+	<td>Цена:</td>
+	<td>{price}</td>
+</tr>
+<?php if(!$this->users->auth_id): ?>
+<tr>
+	<td colspan="2"><p><strong>Укажите свой логин и пароль</strong></p></td>
+</tr>
+
+<tr>
+	<td>Логин:</td>
+	<td><input type="text" name="user_login" /></td>
+</tr>
+
+<tr>
+	<td>Пароль</td>
+	<td><input type="password" name="user_password" /></td>
+</tr>
+
+<tr>
+	<td>&nbsp;</td>
+	<td><a href="{site_url}auth/register" target="blank">Быстрая регистрация</a></td>
+</tr>
+
+<?php endif; ?>
+
+<tr>
+	<td>&nbsp;</td>
+	<td><input type="submit" name="submit" value="Продолжить" /></td>
+</tr>
+
+</table>
+
+</form>

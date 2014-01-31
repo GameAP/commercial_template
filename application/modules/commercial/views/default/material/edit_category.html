@@ -1,0 +1,38 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<script type="text/javascript" language="javascript" src="{site_url}themes/system/ckeditor/ckeditor.js"></script>
+<a class="awesome" href="{base_url}commercial/adm_materials">« Вернуться</a>
+
+<p class="hr">Редактирование записи</p>
+<form action="{base_url}commercial/adm_materials/edit_category/{id}" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+
+	<table cellpadding="5" class="zebra" width="100%">
+	<tr>
+		<td width="10%">Название:</td>
+		<td><input style="width: 80%;" type="text" name="title" value="{title}" /></td>
+	</tr>
+
+	<tr>
+		<td>Описание:</td>
+		<td><input style="width: 80%;" type="text" name="description" value="{description}" /></td>
+	</tr>
+	
+	<tr>
+		<td>Теги:</td>
+		<td><input style="width: 80%;" type="text" name="tags" value="{tags}" /></td>
+	</tr>
+
+	<tr>
+		<td>Инфомация:</td>
+		<td><textarea id="text_area" name="information">{information}</textarea></td>
+	</tr>
+	
+	<script type="text/javascript">
+		CKEDITOR.replace( 'text_area');
+	</script>
+
+	</table>
+	
+	<p align="center"><input class="button" type="submit" name="submit" value="Редактировать" /></p>
+
+</form>

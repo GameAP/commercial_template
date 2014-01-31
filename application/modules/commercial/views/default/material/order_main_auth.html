@@ -1,0 +1,118 @@
+{tariff_info}
+
+<form action="{site_url}commercial/order/game/{tariff_id}" id="form_id" method="post" accept-charset="utf-8">
+<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+
+<script type="text/javascript">
+
+
+function gotogame(el)
+{
+	location.href ='{site_url}commercial/order/game/'+el.options[el.selectedIndex].value;
+}
+
+function AjaxFormRequest(result_id,form_id,url) { 
+	jQuery.ajax({ 
+		url:     url,
+		type:     "POST",
+		dataType: "html",
+		data: jQuery("#"+form_id).serialize(),  
+		success: function(response) {
+			document.getElementById(result_id).innerHTML = response; 
+		}, 
+        error: function(response) {
+			document.getElementById(result_id).innerHTML = "Ошибка"; 
+		} 
+	}); 
+}
+
+function GetIP(result_id, form_id) {
+	jQuery.ajax({ 
+		url:     '{site_url}commercial/billing_ajax/get_ip',
+		type:     "POST",
+		dataType: "html",
+		data: jQuery("#"+form_id).serialize(),  
+		success: function(response) {
+			document.getElementById(result_id).innerHTML = response; 
+		}, 
+		error: function(response) {
+			document.getElementById(result_id).innerHTML = "Error"; 
+		} 
+	});
+}
+
+
+$(document).ready(function(){
+		
+		AjaxFormRequest('price', 'form_id', '{site_url}commercial/billing_ajax/get_price');
+		GetIP('ip_dropdown', 'form_id');
+		
+		$("select[name='ds_id']").change(function() {
+			document.getElementById('ip_dropdown').innerHTML = 'Получение списка IP...';
+			GetIP('ip_dropdown', 'form_id');
+		});
+		
+		$("*").change(function() {
+			AjaxFormRequest('price', 'form_id', '{site_url}commercial/billing_ajax/get_price');
+		});
+	});
+
+</script>
+<table class="zebra" width="100%" cellspacing="10">
+<tr>
+	<td width="20%">Игра:</td>
+	<td>{tariffs}</td>
+</tr>
+
+<tr>
+	<td>Локация:</td>
+	<td>{ds_dropdown}</td>
+</tr>
+
+<tr>
+	<td>IP:</td>
+	<td><div id="ip_dropdown"></div></td>
+</tr>
+
+<tr>
+	<td>Модификация игры:</td>
+	<td>{mods_dropdown}</td>
+</tr>
+
+{ranges}
+<tr>
+	<td>{range_name}:</td>
+	<td>{range_input}</td>
+</tr>
+{/ranges}
+{list}
+<tr>
+	<td>{list_name}:</td>
+	<td>{radio}{radio_input}&nbsp;{radio_name}<br />{/radio}</td>
+</tr>
+{/list}
+{one}
+<tr>
+	<td>{one_name}:</td>
+	<td>{checkbox_input}</td>
+</tr>
+{/one}
+
+<tr>
+	<td>Период оплаты:</td>
+	<td>{dropdown_pay_period}</td>
+</tr>
+
+<tr>
+	<td>Цена:</td>
+	<td><div id="price"></div></td>
+</tr>
+
+<tr>
+	<td>&nbsp;</td>
+	<td><input type="submit" name="submit" value="Продолжить" /></td>
+</tr>
+
+</table>
+
+</form>

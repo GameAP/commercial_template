@@ -1,0 +1,110 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<script type="text/javascript" language="javascript" src="{site_url}themes/system/ckeditor/ckeditor.js"></script>
+<a class="awesome" href="{site_url}commercial">« Вернуться</a><br /><br />
+
+<form action="{site_url}commercial/settings" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+	<table width="100%" class="zebra">
+		
+			<tr>
+				<td>Разрешить тикеты:</td>
+				<td>{checkbox_enable_tickets}</td>
+			</tr>
+			
+			<tr>
+				<td>Создавать ftp аккаунты клиентам:</td>
+				<td>{checkbox_create_ftp_accounts}</td>
+			</tr>
+			
+			<tr>
+				<td>Удалять замороженные серверы (значение в днях после заморозки, 0 - не удалять):</td>
+				<td><input type="text" name="delete_freeeze_servers" value="{delete_freeeze_servers}"/></td>
+			</tr>
+			
+			
+			<tbody>
+				<th colspan="2"><p class="hr">Основная валюта</p></td>
+			</tbody>
+			
+			<tr>
+				<td>Разрешить пользователям использовать другие валюты (<a href="{site_url}commercial/currencies">редактировать список валют</a>)</td>
+				<td>{checkbox_allow_other_currencies}</td>
+			</tr>
+			
+			<tr>
+				<td>Код валюты (ISO 4217):</td>
+				<td><input type="text" name="currency_code" value="{currency_code}" /></td>
+			</tr>
+			
+			<tr>
+				<td>Номер валюты (ISO 4217):</td>
+				<td><input type="text" name="currency_num" value="{currency_num}" /></td>
+			</tr>
+			
+			<tr>
+				<td>Обозначение валюты:</td>
+				<td><input type="text" name="currency_symbol" value="{currency_symbol}" /></td>
+			</tr>
+
+			<tbody>
+				<th colspan="2"><p class="hr">Параметры локального сервера</p></th>
+			</tbody>
+			
+			<tr>
+				<td>Разрешить аренду серверов на локальном сервере:</td>
+				<td>{checkbox_allow_local_server}</td>
+			</tr>
+			
+			<tr>
+				<td>Максимальное количество игровых серверов:</td>
+				<td><input type="text" name="local_server_allow_num" value="{local_server_allow_num}" /></td>
+			</tr>
+			
+			<tr>
+				<td>IP локального сервера (либо список через запятую):</td>
+				<td><input type="text" name="local_server_ip" value="{local_server_ip}" /></td>
+			</tr>
+			
+			<tr>
+				<td>Локация:</td>
+				<td><input type="text" name="local_server_location" value="{local_server_location}" /></td>
+			</tr>
+			
+			<tr>
+				<td>Провайдер:</td>
+				<td><input type="text" name="local_server_provider" value="{local_server_provider}" /></td>
+			</tr>
+			
+			<tbody>
+				<th colspan="2"><p class="hr">Параметры удаленных серверов</p></th>
+			</tbody>
+			
+				<tr>
+					<td colspan="2">Максимальное количество игровых серверов на удаленных серверах</td>
+				</tr>
+				
+			{ds_list}
+				<tr>
+					<td>{ds_name}:</td>
+					<td><input type="text" name="ds_allow_count[{ds_id}]" value="{ds_allow_count}" /></td>
+				</tr>
+			{/ds_list}
+			
+			<tbody>
+				<th colspan="2"><p class="hr">Защита</p></th>
+			</tbody>
+			
+			<tr>
+				<td>Защита от подмены слотов:</td>
+				<td>{checkbox_protect_maxplayers}</td>
+			</tr>
+			
+			<tr>
+				<td>Действие с сервером жулика:</td>
+				<td>{dropdown_protect_action}</td>
+			</tr>
+			
+	</table>
+
+	<p align="center"><input class="button" type="submit" name="submit" value="Сохранить" /></p>
+</form>

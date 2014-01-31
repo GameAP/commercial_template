@@ -1,0 +1,26 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<a class="awesome" href="{site_url}commercial/settings">« Настройки</a>
+<a class="awesome" href="{site_url}commercial/currencies/add">Добавить валюту</a>
+<br /><br />
+<table width="100%" class="zebra">
+	<thead>
+		<th>Код</th>
+		<th>Номер</th>
+		<th>Обозначение</th>
+		<th>Курс</th>
+		<th></th>
+	</thead>
+{currencies_list}
+	<tr>
+		<td>{currency_code}</td>
+		<td>{currency_num}</td>
+		<td>{currency_symbol}</td>
+		<td>{currency_base}</td>
+		<td>
+			<a class="small awesome" href="{site_url}commercial/currencies/edit/{id}">{lang_edit}</a>
+			<a class="small red awesome" href="{site_url}commercial/currencies/delete/{id}">X</a>
+		</td>
+
+	</tr>
+{/currencies_list}
+</table>

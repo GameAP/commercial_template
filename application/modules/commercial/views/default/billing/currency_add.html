@@ -1,0 +1,39 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<a class="awesome" href="{site_url}commercial/currencies">« Вернуться</a>
+<h2>Новая валюта</h2>
+
+<form action="{site_url}commercial/currencies/add" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+
+	<table width="100%" class="zebra">
+		
+		<tr>
+			<td>Код страны:</td>
+			<td><input type="text" name="country_code" /></td>
+		</tr>
+			
+		<tr>
+			<td>Код валюты (ISO 4217):</td>
+			<td><input type="text" name="currency_code" /></td>
+		</tr>
+		
+		<tr>
+			<td>Номер валюты (ISO 4217):</td>
+			<td><input type="text" name="currency_num" /></td>
+		</tr>
+		
+		<tr>
+			<td>Обозначение валюты:</td>
+			<td><input type="text" name="currency_symbol" /></td>
+		</tr>
+		
+		<tr>
+			<td>Курс:</td>
+			<td><input type="text" name="currency_base" /></td>
+		</tr>
+
+	</table>
+
+	<p align="center"><input class="button" type="submit" name="submit" value="{lang_add}" /></p>
+
+</form>

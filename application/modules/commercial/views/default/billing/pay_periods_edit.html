@@ -1,0 +1,38 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<a class="awesome" href="{site_url}commercial/pay_periods">« Вернуться</a>
+<h2>Редактировать период</h2>
+
+<form action="{site_url}commercial/pay_periods/edit/{id}" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+
+	<table width="100%" class="zebra">
+		
+		<tr>
+			<td>Период:</td>
+			<td>
+				<input style="width:50px" type="text" name="multiply" value="{multiply}"/>{dropdown_period}
+				</select>
+			</td>
+		</tr>
+			
+		<tr>
+			<td>Скидка (%):</td>
+			<td><input type="text" name="discount" value="{discount}" /></td>
+		</tr>
+		
+		<tr>
+			<td>Создание счета до окончания срока аренды (часов):</td>
+			<td><input type="text" name="checkout" value="{checkout}" /></td>
+		</tr>
+		
+		<tr>
+			<td>Позиция:</td>
+			<td><input type="text" name="position" value="{position}" /></td>
+		</tr>
+		
+
+	</table>
+
+	<p align="center"><input class="button" type="submit" name="submit" value="{lang_edit}" /></p>
+
+</form>

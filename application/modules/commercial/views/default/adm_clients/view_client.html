@@ -1,0 +1,98 @@
+<a class="awesome" href="{site_url}commercial/adm_clients">« Список клиентов</a>
+<a class="awesome" href="{site_url}commercial/transactions/{user_id}">Движение средств клиента</a>
+<br /><br />
+
+<table width="100%" class="zebra">
+
+	<tr>
+		<td>Логин:</td>
+		<td>{user_login}</td>
+	</tr>
+
+	<tr>
+		<td>Имя:</td>
+		<td>{user_name}</td>
+	</tr>
+
+	<tr>
+		<td>Баланс:</td>
+		<td>{balance} {currency_symbol}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="green small awesome" href="{site_url}commercial/adm_clients/change_balance/{user_id}">Изменить</a></td>
+	</tr>
+
+	<tr>
+		<td>E-Mail:</td>
+		<td>{user_email}</td>
+	</tr>
+	
+	<tr>
+		<td>Счета (всего/неоплаченных):</td>
+		<td>{user_invoices_count} / {user_unpaid_invoices_count}</td>
+	</tr>
+
+</table>
+
+<p class="hr">Параметры клиента</p>
+<form action="{site_url}commercial/adm_clients/save/{user_id}" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+	
+	<table width="50%" class="zebra">
+
+		<tr>
+			<td>{lang_adm_clients_tickets_admin}:</td>
+			<td>{checkbox_tickets_admin}</td>
+		</tr>
+
+	</table>
+	<p align="center"><input class="button" type="submit" name="submit" value="{lang_save}" /></p>
+</form>
+
+<p class="hr">Услуги клиента</p>
+<a class="yellow awesome" href="{site_url}commercial/adm_clients/add_service/{user_id}">Добавить услугу</a><br /><br />
+<table width="100%" class="zebra">
+	<tbody>
+		<th>Название</th>
+		<th>Состояние</th>
+		<th>Дата создания</th>
+		<th>Дата окончания</th>
+		<th>Сумма</th>
+		<th>&nbsp;</th>
+	</tbody>
+{services_list}
+	<tr>
+		<td>{service_name}</td>
+		<td>{status}</td>
+		<td>{date_create}</td>
+		<td>{date_overdue}</td>
+		<td>{cost} руб.</td>
+		<td>
+			<a class="small awesome" href="{site_url}commercial/adm_clients/edit_service/{service_id}/{user_id}">{lang_edit}</a>&nbsp;
+			<a class="red small awesome" href="{site_url}commercial/adm_clients/delete_service/{service_id}/{user_id}">X</a>
+		</td>
+	</tr>
+{/services_list}
+</table>
+
+<p class="hr">Счета клиента</p>
+<a class="green awesome" href="{site_url}commercial/adm_clients/add_invoice/{user_id}">Выписать счет</a><br /><br />
+<table width="100%" class="zebra">
+	<tr>
+		<td><strong>№ счета</strong></td>
+		<td><strong>Дата</strong></td>
+		<td><strong>Статус</strong></td>
+		<td><strong>Сумма</strong></td>
+		<td></td>
+	</tr>
+{invoices_list}
+	<tr>
+		<td>{invoice_id}</td>
+		<td>{date}</td>
+		<td>{invoice_status}</td>
+		<td>{amount} {currency_symbol}</td>
+		<td>
+			<a class="small awesome" href="{site_url}commercial/adm_clients/edit_invoice/{invoice_id}/{user_id}">{lang_edit}</a>&nbsp;
+			<a class="red small awesome" href="{site_url}commercial/adm_clients/delete_invoice/{invoice_id}/{user_id}">X</a>
+		</td>
+
+	</tr>
+{/invoices_list}
+</table>

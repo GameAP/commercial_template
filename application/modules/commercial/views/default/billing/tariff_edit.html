@@ -1,0 +1,57 @@
+<script type="text/javascript" language="javascript" src="{site_url}themes/system/ckeditor/ckeditor.js"></script>
+
+<a class="awesome" href="{site_url}commercial/adm_prices">« Тарифы и цены</a>
+
+<p class="hr">Редактирование тарифа</p>
+<form action="{site_url}commercial/adm_prices/edit_tariff/{tariff_id}" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+	<table width="100%" class="zebra">
+		<tr>
+			<td width="20%">Игра:</td>
+			<td><input type="text" name="game_code" value="{game_code}" /></td>
+		</tr>
+		<tr>
+			<td>Базовая цена:</td>
+			<td><input type="text" name="base_price" value="{base_price}" size="10" /> руб.</td>
+		</tr>
+		
+		<tr>
+			<td>Разрешенные модификации:</td>
+			<td>{mods_list}<p>&nbsp;{checkbox_allow_mod}&nbsp;{mod_name}</p>{/mods_list}</td>
+		</tr>
+		
+		<tr>
+			<td>Разрешенные выделенные серверы:</td>
+			<td>{ds_list}<p>&nbsp;{checkbox_allow_ds}&nbsp;{ds_name}</p>{/ds_list}</td>
+		</tr>
+		
+		<tr>
+			<td>Команда запуска для будущих серверов (Linux):</td>
+			<td><textarea style="height:50px" name="command_start_linux">{command_start_linux}</textarea></td>
+		</tr>
+		
+		<tr>
+			<td>Команда запуска для будущих серверов (Windows):</td>
+			<td><textarea style="height:50px" name="command_start_windows">{command_start_windows}</textarea></td>
+		</tr>
+		
+		<tr>
+			<td>Отправить команды после установки сервера:<br /><span class="description">[ Команды, которые будут отправлены в консоль выделенного сервера после установки игрового сервера. ]</span></td>
+			<td><textarea style="height:50px" name="commands_after_install">{commands_after_install}</textarea></td>
+		</tr>
+		
+		<tr>
+			<td>Информация:</td>
+			<td><textarea id="text_area" name="info">{info}</textarea></td>
+		</tr>
+		
+		<script type="text/javascript">
+			CKEDITOR.replace( 'text_area');
+		</script>
+		
+		<tr>
+			<td>&nbsp;</td>
+			<td><input class="button" type="submit" name="submit" value="Сохранить" /></td>
+		</tr>
+	</table>
+</form>

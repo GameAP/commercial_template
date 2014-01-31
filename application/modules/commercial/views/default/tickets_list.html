@@ -1,0 +1,20 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<a class="awesome" href="{site_url}commercial/tickets/add">Создать</a><br /><br />
+{pagination}
+<table width="100%" class="zebra">
+	<tbody>
+		<th width="35%">Заголовок</th>
+		<th>Последний ответ</th>
+		<th width="35%">Дата создания</th>
+		<th></th>
+	</tbody>
+{tickets_list}
+	<tr>
+		<td><strong></strong>{ticket_title}</strong></td>
+		<td>{ticket_last_answer}</td>
+		<td>{ticket_date}</td>
+		<td><a class="small awesome" href="{site_url}commercial/tickets/view/{ticket_id}">Просмотр</a></td>
+	</tr>
+{/tickets_list}
+</table>
+{pagination}

@@ -1,0 +1,35 @@
+<table width="100%" bolder="1" class="zebra">
+	<tr>
+		<td>№ счета:</td>
+		<td>{invoice_id}</td>
+	</tr>
+	<tr>
+		<td>Сумма:</td>
+		<td>{amount} {currency_symbol}</td>
+	</tr>
+	<tr>
+		<td>Дата:</td>
+		<td>{date}</td>
+	</tr>
+	<?php if ($this->billing->invoices_list[0]['status']): ?>
+	<tr>
+		<td>Оплачен:</td>
+		<td>{date_paid}</td>
+	</tr>
+	<?php else: ?>
+	<tr>
+		<td>Истекает:</td>
+		<td>{date_overdue}</td>
+	</tr>
+	<?php endif; ?>
+	<tr>
+		<td>Статус:</td>
+		<td>{invoice_status}</td>
+	</tr>
+	<tr>
+		<td><?php if (!$this->billing->invoices_list[0]['status']): ?><a class="small green awesome" href="{site_url}commercial/client/pay_invoice/{invoice_id}">Оплатить</a><?php endif; ?>
+		<a class="small awesome" href="{site_url}commercial/client/invoices">Вернуться к счетам</a>
+		</td>
+		<td></td>
+	</tr>
+</table>

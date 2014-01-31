@@ -1,0 +1,32 @@
+<a class="awesome" href="{site_url}commercial/adm_clients/view/{user_id}">« Вернуться</a>
+<br /><br />
+
+<form action="{site_url}commercial/adm_clients/change_balance/{user_id}" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+	
+	<table width="100%" class="zebra">
+		<tr>
+			<td>Логин клиента:</td>
+			<td>{user_login}</td>
+		</tr>
+
+		<tr>
+			<td>Текущий баланс:</td>
+			<td>{balance} {currency_symbol}</td>
+		</tr>
+
+		<tr>
+			<td>Изменить:</td>
+			<td>
+				<select name="action">
+					<option>-- Выберите действие --</option>
+					<option value="plus">Зачислить</option>
+					<option value="minus">Изъять</option>
+				</select>&nbsp;
+				<input type="text" name="amount"/> {currency_symbol}
+			</td>
+		</tr>
+		
+	</table>
+	<p align="center"><input class="button" type="submit" name="submit" value="Изменить" /></p>
+</form>

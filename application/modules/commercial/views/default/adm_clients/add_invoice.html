@@ -1,0 +1,32 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<a class="small awesome" href="{site_url}commercial/adm_clients">« Список клиентов</a>
+
+<p class="hr">Выписать счет</p>
+<form action="{site_url}commercial/adm_clients/add_invoice/{user_id}" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+	
+	<table width="100%" class="zebra">
+		
+		<tr>
+			<td widt="20%">Название:</td>
+			<td><input type="text" name="type_payment" /></td>
+		</tr>
+		
+		<tr>
+			<td>Сумма:</td>
+			<td><input type="text" name="amount" size="10"/> {currency_symbol}</td>
+		</tr>
+		
+		<tr>
+			<td>Срок оплаты (дней):</td>
+			<td><input type="text" name="date_overdue" size="10"/></td>
+		</tr>
+		
+		<tr>
+			<td>Прикрепить к услуге:</td>
+			<td>{dropdown_services}</td>
+		</tr>
+
+	</table>
+	<p align="center"><input class="button" type="submit" name="submit" value="Выписать" /></p>
+</form>

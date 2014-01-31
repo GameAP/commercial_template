@@ -1,0 +1,28 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<a class="awesome" href="{site_url}commercial">« На главную модуля</a>
+<br /><br />
+{pagination}
+<table width="100%" class="zebra">
+	<tbody>
+		<th>{lang_login}</th>
+		<th>Баланс</th>
+		<th>Количество услуг</th>
+		<th>Неоплаченных счетов</th>
+		<th>{lang_commands}</th>
+	</tbody>
+{users_list}
+	<tr>
+		<td>{login}</td>
+		<td>{user_balance} {currency_symbol}</td>
+		<td>{user_services_count}</td>
+		<td>{user_unpaid_invoices_count}</td>
+		<td>
+			<a class="green small awesome" href="{site_url}commercial/adm_clients/add_invoice/{user_id}">Выписать счет</a>
+			<a class="yellow small awesome" href="{site_url}commercial/adm_clients/add_service/{user_id}">Добавить услугу</a>
+			<a class="small awesome" href="{site_url}commercial/adm_clients/view/{user_id}">Подробности</a>
+		</td>
+
+	</tr>
+{/users_list}
+</table>
+{pagination}

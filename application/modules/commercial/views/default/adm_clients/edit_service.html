@@ -1,0 +1,44 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+<a class="awesome" href="{site_url}commercial/adm_clients{user_link}">« Вернуться</a>
+<br /><br />
+
+<form action="{site_url}/commercial/adm_clients/edit_service/{service_id}/{user_id}" method="post" accept-charset="utf-8">
+<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+
+	<table width="100%" class="zebra">
+		<tr>
+			<td>Название:</td>
+			<td><input type="text" name="name" value="{name}"/></td>
+		</tr>
+		<tr>
+			<td>Цена:</td>
+			<td><input type="text" name="price" value="{price}"/> руб.</td>
+		</tr>
+		<tr>
+			<td>Статус:</td>
+			<td>{checkbox_status}</td>
+		</tr>
+		<tr>
+			<td>Создан:</td>
+			<td><input type="text" name="date_create" value="{date_create}"/></td>
+		</tr>
+		<tr>
+			<td>Истекает:</td>
+			<td><input type="text" name="date_overdue" value="{date_overdue}"/></td>
+		</tr>
+	</table>
+	
+	<p class="hr">Параметры</p>
+	<table width="100%" class="zebra">
+		{service_parameters}
+		<tr>
+			<td>{param_name}:</td>
+			<td><input type="text" name="parameters[{param_id}]" value="{param_value}"/></td>
+		</tr>
+		{/service_parameters}
+	</table>
+
+	<p align="center"></p><input class="button" type="submit" name="edit_ds" value="{lang_save}" /></p>
+	
+</form>

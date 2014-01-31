@@ -1,0 +1,16 @@
+<table width="100%" class="zebra">
+	<tr>
+		<td><strong>Товар</strong></td>
+		<td><strong>Количество</strong></td>
+		<td><strong>Цена</strong></td>
+		<td>&nbsp;</td>
+	</tr>
+	{cart_items}
+	<tr>
+		<td>{name}</td>
+		<td>{qty}</td>
+		<td>{subtotal} руб.</td>
+		<td><a class="green awesome" href="{site_url}commercial/client/payment/{rowid}">Покупка</a></td>
+	</tr>
+	{/cart_items}
+</table>
