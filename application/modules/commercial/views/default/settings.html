@@ -12,6 +12,11 @@
 			</tr>
 			
 			<tr>
+				<td>Разрешить промокоды (<a href="{site_url}commercial/adm_promo">Редактировать промокоды</a>):</td>
+				<td>{checkbox_allow_promo}</td>
+			</tr>
+			
+			<tr>
 				<td>Создавать ftp аккаунты клиентам:</td>
 				<td>{checkbox_create_ftp_accounts}</td>
 			</tr>
@@ -20,8 +25,7 @@
 				<td>Удалять замороженные серверы (значение в днях после заморозки, 0 - не удалять):</td>
 				<td><input type="text" name="delete_freeeze_servers" value="{delete_freeeze_servers}"/></td>
 			</tr>
-			
-			
+
 			<tbody>
 				<th colspan="2"><p class="hr">Основная валюта</p></td>
 			</tbody>
@@ -46,35 +50,6 @@
 				<td><input type="text" name="currency_symbol" value="{currency_symbol}" /></td>
 			</tr>
 
-			<tbody>
-				<th colspan="2"><p class="hr">Параметры локального сервера</p></th>
-			</tbody>
-			
-			<tr>
-				<td>Разрешить аренду серверов на локальном сервере:</td>
-				<td>{checkbox_allow_local_server}</td>
-			</tr>
-			
-			<tr>
-				<td>Максимальное количество игровых серверов:</td>
-				<td><input type="text" name="local_server_allow_num" value="{local_server_allow_num}" /></td>
-			</tr>
-			
-			<tr>
-				<td>IP локального сервера (либо список через запятую):</td>
-				<td><input type="text" name="local_server_ip" value="{local_server_ip}" /></td>
-			</tr>
-			
-			<tr>
-				<td>Локация:</td>
-				<td><input type="text" name="local_server_location" value="{local_server_location}" /></td>
-			</tr>
-			
-			<tr>
-				<td>Провайдер:</td>
-				<td><input type="text" name="local_server_provider" value="{local_server_provider}" /></td>
-			</tr>
-			
 			<tbody>
 				<th colspan="2"><p class="hr">Параметры удаленных серверов</p></th>
 			</tbody>

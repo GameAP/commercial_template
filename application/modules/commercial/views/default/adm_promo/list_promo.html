@@ -1,0 +1,22 @@
+<a class="awesome" href="{site_url}commercial">« Главная модуля</a>
+<a class="awesome" href="{site_url}commercial/adm_promo/add">Добавить код</a>
+<br /><br />
+{pagination}
+<p class="hr">Промокоды</p>
+<table class="zebra" width="75%">
+	<tbody>
+		<th>Код</th>
+		<th>Скидка</th>
+		<th>Истекает</th>
+		<th>&nbsp;</th>
+	</tbody>
+	{promo_list}
+	<tr>
+		<td>{promocode}</td>
+		<td>{discount}</td>
+		<td>{date_overdue}</td>
+		<td width="20%"><a class="small awesome" href="{site_url}commercial/adm_promo/edit/{promocode}">{lang_edit}</a>&nbsp;<a class="red small awesome" href="{site_url}commercial/adm_promo/delete/{promocode}">X</a></td>
+	</tr>
+	{/promo_list}
+</table>
+{pagination}

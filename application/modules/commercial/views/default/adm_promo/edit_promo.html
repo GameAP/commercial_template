@@ -1,0 +1,36 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<a class="awesome" href="{site_url}commercial/adm_promo">« Список кодов</a>
+
+<p class="hr">Добавить промокод</p>
+<form action="{submit_url}" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+	
+	<table width="100%" class="zebra">
+		
+		<tr>
+			<td widt="20%">Промокод:</td>
+			<td><input type="text" name="promocode" value="{promocode}" /></td>
+		</tr>
+		
+		<tr>
+			<td widt="20%">Скидка (%):</td>
+			<td><input type="text" name="discount" value="{discount}" /></td>
+		</tr>
+		
+		<tr>
+			<td widt="20%">Дата деактивации кода:</td>
+			<td><input type="text" name="date_overdue" value="{date_overdue}" /></td>
+		</tr>
+		
+		<tr>
+			<td widt="20%">Тарифы:</td>
+			<td>
+				{tariffs_list}
+					{checkbox}&nbsp;{name}<br />
+				{/tariffs_list}
+			</td>
+		</tr>
+
+	</table>
+	<p align="center"><input class="button" type="submit" name="submit" value="{submit_text}" /></p>
+</form>

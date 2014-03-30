@@ -1,4 +1,13 @@
 <a class="awesome" href="{site_url}commercial/client/services">« Вернуться к списку услуг</a>
+
+<?php 
+	if($this->billing->services_list[0]['server_id'] && 
+		($this->billing->services_list[0]['status'] == 'active' OR $this->billing->services_list[0]['status'] == 'prolong')
+	): 
+?>
+<a class="awesome" href="{site_url}commercial/client/reinstall_server/{service_id}">Переустановить сервер</a>
+<?php endif; ?>
+
 <br /><br />
 <table width="100%" class="zebra">
 	<tr>
@@ -28,4 +37,6 @@
 </table>
 <?php if($this->billing->services_list[0]['invoice_id']): ?>
 <a class="green awesome" href="{site_url}commercial/client/pay_invoice/{invoice_id}">Оплатить услугу</a>
+<?php elseif ($this->billing->services_list[0]['status'] == 'active' OR $this->billing->services_list[0]['status'] == 'prolong' OR $this->billing->services_list[0]['status'] == 'freeze'): ?>
+<a class="green awesome" href="{site_url}commercial/client/prolong_service/{service_id}">Продлить услугу</a>
 <?php endif; ?>
