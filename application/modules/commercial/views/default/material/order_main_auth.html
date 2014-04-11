@@ -36,13 +36,19 @@ function GetIP(result_id, form_id) {
 			document.getElementById(result_id).innerHTML = response; 
 		}, 
 		error: function(response) {
-			document.getElementById(result_id).innerHTML = "Error"; 
+			document.getElementById(result_id).innerHTML = ""; 
 		} 
 	});
 }
 
+function ShowPromo() {
+	$('#promo').show();
+	$('#showpromolink').hide();
+}
+
 
 $(document).ready(function(){
+		$('#promo').hide();
 		
 		AjaxFormRequest('price', 'form_id', '{site_url}commercial/billing_ajax/get_price');
 		GetIP('ip_dropdown', 'form_id');
@@ -55,7 +61,7 @@ $(document).ready(function(){
 		$("*").change(function() {
 			AjaxFormRequest('price', 'form_id', '{site_url}commercial/billing_ajax/get_price');
 		});
-	});
+});
 
 </script>
 <table class="zebra" width="100%" cellspacing="10">
@@ -80,22 +86,24 @@ $(document).ready(function(){
 </tr>
 
 {ranges}
-<tr>
-	<td>{range_name}:</td>
-	<td>{range_input}</td>
-</tr>
+	<tr>
+		<td>{range_name}:</td>
+		<td>{range_input}</td>
+	</tr>
 {/ranges}
+
 {list}
-<tr>
-	<td>{list_name}:</td>
-	<td>{radio}{radio_input}&nbsp;{radio_name}<br />{/radio}</td>
-</tr>
+	<tr>
+		<td>{list_name}:</td>
+		<td>{radio}{radio_input}&nbsp;{radio_name}<br />{/radio}</td>
+	</tr>
 {/list}
+
 {one}
-<tr>
-	<td>{one_name}:</td>
-	<td>{checkbox_input}</td>
-</tr>
+	<tr>
+		<td>{one_name}:</td>
+		<td>{checkbox_input}</td>
+	</tr>
 {/one}
 
 <tr>
@@ -103,8 +111,19 @@ $(document).ready(function(){
 	<td>{dropdown_pay_period}</td>
 </tr>
 
+<?php if($this->config->item('allow_promo')): ?>
+	<tr id="promo">
+		<td>Промокод:</td>
+		<td><input type="text" name="promo" /></td>
+	</tr>
+<?php endif; ?>
+
 <tr>
-	<td>Цена:</td>
+	<td>Цена:<br />
+		<?php if($this->config->item('allow_promo')): ?>
+			<a id="showpromolink" href="#" onclick="ShowPromo();return false;" >{lang_order_enter_promo}</a>
+		<?php endif; ?>
+	</td>
 	<td><div id="price"></div></td>
 </tr>
 
