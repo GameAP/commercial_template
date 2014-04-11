@@ -1,7 +1,7 @@
 <div class="news"><div class="news1">
 	{tariff_info}
 
-	<form action="{site_url}commercial/order/game/{tariff_id}" id="form_id" method="post" accept-charset="utf-8" class="form-horizontal">
+	<form action="{site_url}commercial/order/game/{tariff_id}" id="form_id" method="post" accept-charset="utf-8">
 	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 
 	<script type="text/javascript">
@@ -22,11 +22,11 @@
 				document.getElementById(result_id).innerHTML = response; 
 			}, 
 			error: function(response) {
-				document.getElementById(result_id).innerHTML = "Ошибка"; 
+				document.getElementById(result_id).innerHTML = ""; 
 			} 
 		}); 
 	}
-	
+
 	function GetIP(result_id, form_id) {
 		jQuery.ajax({ 
 			url:     '{site_url}commercial/billing_ajax/get_ip',
@@ -42,91 +42,96 @@
 		});
 	}
 
+	function ShowPromo() {
+		$('#promo').show();
+		$('#showpromolink').hide();
+	}
+
+
 	$(document).ready(function(){
-		
-		AjaxFormRequest('price', 'form_id', '{site_url}commercial/billing_ajax/get_price');
-		GetIP('ip_dropdown', 'form_id');
-		
-		$("select[name='ds_id']").change(function() {
-			document.getElementById('ip_dropdown').innerHTML = 'Получение списка IP...';
-			GetIP('ip_dropdown', 'form_id');
-		});
-		
-		$("*").change(function() {
+			$('#promo').hide();
+			
 			AjaxFormRequest('price', 'form_id', '{site_url}commercial/billing_ajax/get_price');
-		});
+			GetIP('ip_dropdown', 'form_id');
+			
+			$("select[name='ds_id']").change(function() {
+				document.getElementById('ip_dropdown').innerHTML = 'Получение списка IP...';
+				GetIP('ip_dropdown', 'form_id');
+			});
+			
+			$("*").change(function() {
+				AjaxFormRequest('price', 'form_id', '{site_url}commercial/billing_ajax/get_price');
+			});
 	});
 
 	</script>
+	<table class="zebra" width="100%" cellspacing="10">
+	<tr>
+		<td width="40%">Игра:</td>
+		<td>{tariffs}</td>
+	</tr>
+
+	<tr>
+		<td>Локация:</td>
+		<td>{ds_dropdown}</td>
+	</tr>
 	
-	<div class="form-group">
-		<table class="table table-striped table-hover" width="50%">
-		<tr>
-			<td width="20%">Игра:</td>
-			<td>{tariffs}</td>
-		</tr>
+	<tr>
+		<td>IP:</td>
+		<td><div id="ip_dropdown"></div></td>
+	</tr>
 
-		<tr>
-			<td>Локация:</td>
-			<td>{ds_dropdown}</td>
-		</tr>
-		
-		<tr>
-			<td>IP:</td>
-			<td><div id="ip_dropdown"></div></td>
-		</tr>
+	<tr>
+		<td>Модификация игры:</td>
+		<td>{mods_dropdown}</td>
+	</tr>
 
-		<tr>
-			<td>Модификация игры:</td>
-			<td>{mods_dropdown}</td>
+	{ranges}
+	<tr>
+		<td>{range_name}:</td>
+		<td>{range_input}</td>
+	</tr>
+	{/ranges}
+	{list}
+	<tr>
+		<td>{list_name}:</td>
+		<td>{radio}{radio_input}&nbsp;{radio_name}<br />{/radio}</td>
+	</tr>
+	{/list}
+	{one}
+	<tr>
+		<td>{one_name}:</td>
+		<td>{checkbox_input}</td>
+	</tr>
+	{/one}
+	
+	<tr>
+		<td>Период оплаты:</td>
+		<td>{dropdown_pay_period}</td>
+	</tr>
+	
+	<?php if($this->config->item('allow_promo')): ?>
+		<tr id="promo">
+			<td>Промокод:</td>
+			<td><input type="text" name="promo" /></td>
 		</tr>
+	<?php endif; ?>
+	
+	<tr>
+		<td>Цена:<br />
+			<?php if($this->config->item('allow_promo')): ?>
+				<a id="showpromolink" href="#" onclick="ShowPromo();return false;" >{lang_order_enter_promo}</a>
+			<?php endif; ?>
+		</td>
+		<td><div id="price"></div></td>
+	</tr>
 
-		{ranges}
-		<tr>
-			<td>{range_name}:</td>
-			<td>{range_input}</td>
-		</tr>
-		{/ranges}
-		
-		{list}
-		<tr>
-			<td>{list_name}:</td>
-			<td>
-				{radio}
-				<div class="radio">
-					<label>
-						{radio_input}
-						{radio_name}
-					</label>
-				</div>
-				{/radio}
-			</td>
-		</tr>
-		{/list}
-		{one}
-		<tr>
-			<td>{one_name}:</td>
-			<td>{checkbox_input}</td>
-		</tr>
-		{/one}
-		
-		<tr>
-			<td>Период оплаты:</td>
-			<td>{dropdown_pay_period}</td>
-		</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><input type="submit" name="submit" value="Продолжить" /></td>
+	</tr>
 
-		<tr>
-			<td>Цена:</td>
-			<td><div id="price"></div></td>
-		</tr>
-
-		<tr>
-			<td>&nbsp;</td>
-			<td><input class="btn btn-primary" type="submit" name="submit" value="Продолжить" /></td>
-		</tr>
-
-		</table>
-	</div>
+	</table>
 
 	</form>
 
