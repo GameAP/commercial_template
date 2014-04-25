@@ -1,23 +1,20 @@
 <p class="hr">Выберите платежную систему</p>
 <table class="zebra" width="100%">
-	<tbody>
-		<th>Название</th>
-		<th width="50%">&nbsp;</th>
-		<th>&nbsp;</th>
-	</tbody>
-	<?php if($this->billing->allow_pay_from_account): ?>
-	<tr>
-		<td>Списать с баланса</td>
-		<td>&nbsp;</td>
-		<td><a class="small awesome" href="{site_url}commercial/client/pay_invoice/{invoice_id}/account">Выбрать</a></td>
-	</tr>
-	<?php endif; ?>
-	
-	{transfer_systems_list}
-	<tr>
-		<td>{name}</td>
-		<td><a href="{site_url}commercial/client/pay_invoice/{invoice_id}/{transfer_id}">{logotype}</a></td>
-		<td><a class="small awesome" href="{site_url}commercial/client/pay_invoice/{invoice_id}/{transfer_id}">Выбрать</a></td>
-	</tr>
-	{/transfer_systems_list}
-</table>
+<div style="overflow: hidden;">
+	<div style="width: 100%;">
+		<?php if($this->billing->allow_pay_from_account): ?>
+		<div style="text-align: center; float: left; width: 20%; height: 180px;">
+			Списать с баланса<br />
+			<a href="{site_url}commercial/client/pay_invoice/{invoice_id}/account"><img src="{site_url}uploads/transfers/balance.png" /></a><br />
+			<a class="small awesome" href="{site_url}commercial/client/pay_invoice/{invoice_id}/account">{lang_select}</a>
+		</div>
+		<?php endif; ?>
+		{transfer_systems_list}
+		<div style="text-align: center; float: left; width: 20%; height: 180px;">
+			{name}<br />
+			<a href="{site_url}commercial/client/pay_invoice/{invoice_id}/{transfer_id}">{logotype}</a><br />
+			<a class="small awesome" href="{site_url}commercial/client/pay_invoice/{invoice_id}/{transfer_id}">{lang_select}</a>
+		</div>
+		{/transfer_systems_list}
+	</div>
+</div>

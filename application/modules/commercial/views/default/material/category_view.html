@@ -1,17 +1,13 @@
 <h1>{title}</h1>
 {information}
-<hr /><br />
+<br />
 
-<table width="100%">
-	{entries}
-	<tr align="center">
-		<td><h3>{entry_title}</h3></td>
-	</tr>
-	<tr>
-		<td>{entry_preview}</td>
-	</tr>
-	<tr>
-		<td align="right">Дата: {entry_date}&nbsp;|&nbsp;<a href="{site_url}materials/view/{page}">Подробнее >></a><hr /></td>
-	</tr>
-	{/entries}
-</table>
+{entries}
+<div class="news">
+	<div class="news1">
+		<div class="newsTitle lcol"><a href="{site_url}materials/view/{page}">{entry_title}</a></div>
+		{entry_preview}
+		<div class="clr"></div>
+	</div>
+</div>
+{/entries}

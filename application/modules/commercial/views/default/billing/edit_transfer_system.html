@@ -1,25 +1,35 @@
 <a class="awesome" href="{site_url}commercial/adm_transfer_systems">« Вернуться</a>
-<h2>Новая платежная система</h2>
+<h2>Редактирование платежной системы</h2>
 
 <form action="{site_url}commercial/adm_transfer_systems/edit/{id}" method="post" accept-charset="utf-8">
 	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 
 	<table width="100%" class="zebra">
 		
-	<tr>
-		<td width="30%">Название платежной системы:</td>
-		<td><input style="width: 80%" type="text" name="name" value="{name}" /></td>
-	</tr>
-	
-	<tr>
-		<td>URL ссылка на логотип платежной системы:</td>
-		<td><input style="width: 80%" type="text" name="logotype" value="{logotype}" /></td>
-	</tr>
-	
-	<tr>
-		<td>Описание платежной системы:</td>
-		<td><input style="width: 80%" type="text" name="description" value="{description}" /></td>
-	</tr>
+		<tr>
+			<td width="30%">Название платежной системы:</td>
+			<td><input style="width: 80%" type="text" name="name" value="{name}" /></td>
+		</tr>
+		
+		<tr>
+			<td>URL ссылка на логотип платежной системы:</td>
+			<td><input style="width: 80%" type="text" name="logotype" value="{logotype}" /></td>
+		</tr>
+		
+		<tr>
+			<td>Описание платежной системы:</td>
+			<td><input style="width: 80%" type="text" name="description" value="{description}" /></td>
+		</tr>
+		
+		<tr>
+			<td width="30%">Драйвер:</td>
+			<td>{driver_dropdown}</td>
+		</tr>
+		
+		<tr>
+			<td width="30%">Статус системы:</td>
+			<td>{status_dropdown}</td>
+		</tr>
 
 	</table>
 	

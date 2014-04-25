@@ -1,86 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <title>{title}</title>
-
-    <link rel="stylesheet" type="text/css" href="{site_url}themes/system/commercial/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="{site_url}themes/system/commercial/css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="{site_url}themes/system/commercial/css/materials.css" />
-    <script type="text/javascript" language="javascript" src="{site_url}themes/system/commercial/js/boostrap.min.js"></script>
-    <script type="text/javascript" language="javascript" src="{site_url}themes/system/commercial/js/addon.js"></script>
-    <script type="text/javascript" language="javascript" src="{site_url}themes/system/js/jquery-1.7.1.min.js"></script>
+	<title>{title}</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{base_url}themes/system/commercial/css/style.css" />
+    <script type="text/javascript" language="javascript" src="{base_url}themes/system/commercial/js/addon.js"></script>
+    <script type="text/javascript" language="javascript" src="{base_url}themes/system/js/jquery-1.7.1.min.js"></script>
 </head>
-<body{body_js}>
-	
-<div class='container'>
 
-	<div class='header'>
-		<div class='himage'>
-			<a href="http://hldm.org"><img src="{site_url}themes/system/commercial/images/logo.png" alt="Half-Life DeathMatch" /></a><br /><br />     
-		</div>
-	</div>   
+<body>
+<!-- Head -->
+<div class="headw">
+<div class="head">
+	<div class="logotype"></div>
+	<div class="login">
+		<?php if($this->users->auth_id): ?>
+		<a href="{site_url}auth">Панель управления</a>
+		<?php else: ?>
+		<a href="{site_url}auth/in">Авторизация</a>&nbsp;|&nbsp;
+		<a href="{site_url}auth/register">Регистрация</a>
+		<?php endif; ?>
+	</div>
+</div>
+</div>
+<div class="wrapper-navi">
+<div class="navigation">
+	<div style="float:left">
+		<span class="vmenu">
+			<a href="{site_url}">Главная</a>
+			<a href="{site_url}materials/view/games">Услуги</a>
+			<a href="{site_url}/materials/view/faq">FAQ</a>
+			<a href="{site_url}materials/view/contacts">Контакты</a>
+		</span>
+	</div>
+</div>
+</div>
+<!-- /Head -->
+<div class="wrapper">
+<div class="middle">
+<div class="middlec">
+<!-- left -->
+<div class="left">
 
-	<div class="navbar navbar-default">
-	  <div class="navbar-collapse collapse">
-		<ul class="nav navbar-nav">
-			<li><a href="{site_url}">Главная</a></li>
-			<li><a href="{site_url}commercial/order">Услуги</a></li>
-			<li><a href="{site_url}materials/view/contacts">Контакты</a></li>
-			<li><a href="/auth">Панель управления</a></li>
-		</ul>
-	  </div>
-	</div>
-	
-      
-      <div class="panel panel-default">
-	  <div class="panel-body">
-		{content}
-	  </div>
-	</div>
-      
-	<div class="row-fluid">
-		<div class="span4 panel panel-default">
-		  <div class="panel-heading">Популярные игры</div>
-			<div class="panel-body">
-				<ul>
-					<li><a href="{site_url}commercial/order/game/1">Counter-Strike 1.6</a></li>
-					<li><a href="{site_url}commercial/order/game/2">Half-Life</a></li>
-					<li><a href="{site_url}commercial/order/game/3">Minecraft</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="span4 panel panel-default">
-			<div class="panel-heading">Информация</div>
-			<div class="panel-body">
-				<ul>
-					<li><a href="http://wiki.hldm.org">Wiki</a></li>
-					<li><a href="http://forum.hldm.org">Форум</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="span4 panel panel-default">
-			<div class="panel-heading">Клиентам</div>
-			<div class="panel-body">
-				<ul>
-					<li><a href="{site_url}materials/view/oferta">Договор оферта</a></li>
-					<li><a href="#">Контакты</a></li>
-				</ul>
-			</div>
+<div class="box">
+	<div class="boxTitle">Навигация</div>
+	<div class="boxContent">
+		<div class="boxMenu">
+			<ul>
+				<li><a href="{site_url}materials/category/1">Новости</a></li>
+				<li><a href="{site_url}materials/view/games">Услуги</a></li>
+				<li><a href="{site_url}materials/category/5">Статьи</a></li>
+				<li><a href="{site_url}materials/view/contacts">Контакты</a></li>
+			</ul>
 		</div>
 	</div>
+</div>
 
-	<div class="footer">
-		<table width="100%">
-			<tr>
-				<td width="100%"></td>
-				<p align="center">Powered by <a href="http://gameap.ru">GameAP</a></p>
-				</td>
-			</tr>
-		</table>
+<div class="box">
+	<div class="boxTitle">Популярное</div>
+	<div class="boxContent">
+		<div class="boxPopular">
+			<ul>
+				<li><a href="{site_url}commercial/order/game/1">Counter-Strike 1.6</a></li>
+				<li><a href="{site_url}commercial/order/game/6">Counter-Strike: Source</a></li>
+				<li><a href="{site_url}commercial/order/game/2">Half-Life 1</a></li>
+				<li><a href="{site_url}commercial/order/game/5">Minecraft</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="box">
+	<div class="boxTitle">&nbsp;</div>
+	<div class="boxContent">
+		<p align="center"><a href='http://host-tracker.com/ru/website-monitoring-info/14356127/lvuc/'><img
+width='80' height='15' border='0' alt='службы мониторинга серверов' rel='nofollow'
+src="http://ext.host-tracker.com/uptime-img/?s=15&amp;t=14356127&amp;m=00.09&amp;p=Total&amp;src=lvuc" /></a></p>
+		<p align="center"><a target="blank" href="http://passport.webmoney.ru/asp/certview.asp?wmid=384343352831"><img src="http://empire-host.org/themes/system/commercial/images/wm_atest.png" /></a></p>
+		<p align="center"><a href="http://www.megastock.ru/" target="_blank"><img src="http://www.megastock.ru/doc/Logo/acc_blue_on_white_ru.png" alt="www.megastock.ru" border="0"/></a></p>
+	</div>
+</div>
+
+</div>
+<!-- /left -->
+<!-- right -->
+<div class="right">
+
+
+<div class="news">
+	{content}
+</div>
+
+
+<?php if(!$this->users->auth_id): ?>
+<div class="addcomment">
+	<div class="addcommentTitle">Информация</div>
+	<div class="error">
+		<span class="errorText">
+			Уважаемый посетитель, Вы зашли на сайт как не зарегистрированный пользователь.<br>
+			Мы рекомендуем Вам <a href="{site_url}auth/register">зарегистрироваться</a>, либо войти на сайт под своим логином.
+		</span>
 	</div>
 	
 </div>
+<?php endif; ?>
+
+</div>
+<!-- /right -->
+</div>
+</div>
+<div class="footer">
+	<div class="footerText">
+	Аренда игровых серверов © 2013-2014
+		<div class="footerLink">
+			<a href="{site_url}materials/view/help">Помощь</a> |
+			<a href="{site_url}/materials/view/faq">FAQ</a> | 
+			<a href="{site_url}materials/view/oferta">Договор оферта</a>
+		</div>
+	</div>
+</div>
+</div>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter21500830 = new Ya.Metrika({id:21500830,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/21500830" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 
 </body>
 </html>

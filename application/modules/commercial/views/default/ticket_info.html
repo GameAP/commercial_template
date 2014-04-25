@@ -24,7 +24,7 @@
 	<hr />
 	{/tickets_list}
 
-
+<?php if (!$this->_ci_cached_vars['ticket_closed']): ?>
 <form action="{site_url}commercial/tickets/add/{parent_ticket_id}" method="post" accept-charset="utf-8">
 	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 	
@@ -39,8 +39,12 @@
 				<td>Сообщение</td>
 				<td><textarea style="height: 50px" name="message"></textarea></td>
 			</tr>
+			
+			<tr>
+				<td colspan="2"><label><input type="checkbox" name="close">Закрыть как решенный</label></td>
+			</tr>
 
 	</table>
 	<p align="center"><input class="button" type="submit" name="submit" value="Ответить" /></p>
-	
 </form>
+<?php endif?>

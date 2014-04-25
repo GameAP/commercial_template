@@ -5,22 +5,31 @@
 	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 
 	<table width="100%" class="zebra">
+		<tr>
+			<td width="30%">Название платежной системы:</td>
+			<td><input style="width: 80%" type="text" name="name" /></td>
+		</tr>
 		
-	<tr>
-		<td width="30%">Название платежной системы:</td>
-		<td><input style="width: 80%" type="text" name="name" /></td>
-	</tr>
-	
-	<tr>
-		<td>URL ссылка на логотип платежной системы:</td>
-		<td><input style="width: 80%" type="text" name="logotype" /></td>
-	</tr>
-	
-	<tr>
-		<td>Описание платежной системы:</td>
-		<td><input style="width: 80%" type="text" name="description" /></td>
-	</tr>
-
+		<tr>
+			<td>URL ссылка на логотип платежной системы:</td>
+			<td><input style="width: 80%" type="text" name="logotype" /></td>
+		</tr>
+		
+		<tr>
+			<td>Описание платежной системы:</td>
+			<td><input style="width: 80%" type="text" name="description" /></td>
+		</tr>
+		
+		<tr>
+			<td width="30%">Драйвер:</td>
+			<td>{driver_dropdown}</td>
+		</tr>
+		
+		<tr>
+			<td width="30%">Статус системы:</td>
+			<td>{status_dropdown}</td>
+		</tr>
+		
 	</table>
 	
 	<p align="center"><input class="button" type="submit" name="submit" value="Добавить" /></p>
