@@ -1,6 +1,7 @@
 <script type="text/javascript" language="javascript" src="{site_url}themes/system/ckeditor/ckeditor.js"></script>
 
-<a class="awesome" href="{site_url}commercial/adm_prices">« Тарифы и цены</a>
+<a class="awesome" href="{site_url}commercial/adm_prices">« Список тарифов</a>
+<a class="green awesome" href="{site_url}commercial/adm_prices/tariff/{tariff_id}">Редактировать цены</a>
 
 <p class="hr">Редактирование тарифа</p>
 <form action="{site_url}commercial/adm_prices/edit_tariff/{tariff_id}" method="post" accept-charset="utf-8">
@@ -16,6 +17,16 @@
 		</tr>
 		
 		<tr>
+			<td>Активен:</td>
+			<td>{checkbox_active}</td>
+		</tr>
+		
+		<tr>
+			<td>Ручная установка:</td>
+			<td>{checkbox_install_manual}</td>
+		</tr>
+		
+		<tr>
 			<td>Разрешенные модификации:</td>
 			<td>{mods_list}<p>&nbsp;{checkbox_allow_mod}&nbsp;{mod_name}</p>{/mods_list}</td>
 		</tr>
@@ -25,6 +36,11 @@
 			<td>{ds_list}<p>&nbsp;{checkbox_allow_ds}&nbsp;{ds_name}</p>{/ds_list}</td>
 		</tr>
 		
+		<tr>
+			<td>Разрешенные периоды оплаты:</td>
+			<td>{periods_list}<p>&nbsp;{checkbox_allow_period}&nbsp;{period_name}</p>{/periods_list}</td>
+		</tr>
+
 		<tr>
 			<td>Команда запуска для будущих серверов (Linux):</td>
 			<td><textarea style="height:50px" name="command_start_linux">{command_start_linux}</textarea></td>

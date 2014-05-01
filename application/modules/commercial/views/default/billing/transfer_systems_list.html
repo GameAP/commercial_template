@@ -4,13 +4,15 @@
 <p class="hr">Выберите платежную систему</p>
 <table class="zebra" width="100%">
 	<tbody>
-		<th width="75%">Название</th>
-		<th>&nbsp;</th>
+		<th width="70%">Название</th>
+		<th width="10%">&nbsp;</th>
+		<th width="30%">&nbsp;</th>
 	</tbody>
 	{transfer_systems_list}
 	<tr>
 		<td>{name}</td>
-		<td><a class="small awesome" href="{site_url}commercial/adm_transfer_systems/edit/{id}">Редактировать</a>&nbsp;<a class="small red awesome" href="{site_url}commercial/adm_transfer_systems/delete/{id}">X</a></td>
+		<td align="center"><a class="small awesome orange" href="{site_url}commercial/adm_transfer_systems/sort/{id}/up">&#8593;</a>&nbsp;<a class="small awesome orange" href="{site_url}commercial/adm_transfer_systems/sort/{id}/down">&#8595;</a></td>
+		<td align="center"><a class="small awesome" href="{site_url}commercial/adm_transfer_systems/edit/{id}">Редактировать</a>&nbsp;<a class="small red awesome" href="{site_url}commercial/adm_transfer_systems/delete/{id}">X</a></td>
 	</tr>
 	{/transfer_systems_list}
 </table>

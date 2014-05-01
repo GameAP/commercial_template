@@ -22,6 +22,11 @@
 		</tr>
 		
 		<tr>
+			<td width="30%">Валюта:</td>
+			<td>{currencies_dropdown}</td>
+		</tr>
+
+		<tr>
 			<td width="30%">Драйвер:</td>
 			<td>{driver_dropdown}</td>
 		</tr>
@@ -33,11 +38,31 @@
 
 	</table>
 	
+	<p class="hr">Данные для настройки платежной системы:</p>
+	
+	<table width="100%" class="zebra">
+		<tr>
+			<td width="20%">Result Url:</td>
+			<td>{result_url}</td>
+		</tr>
+		<tr>
+			<td>Success Url:</td>
+			<td>{success_url}</td>
+		</tr>
+		<tr>	
+			<td>Fail Url:</td>
+			<td>{success_url}</td>
+		</tr>
+	</table>
+	
 	<p class="hr">Данные платежной системы</p>
 	<table width="100%" class="zebra" id="transfer_data">
 	
 		<tr>
-			<td colspan="5"><a class="small awesome" href="#" onclick="add_new_item('transfer_data'); return false;" id="add">Добавить</a></td>
+			<td colspan="5">
+				<a class="small awesome" href="#" onclick="add_new_item('transfer_data'); return false;" id="add">Добавить</a>
+				<a class="small awesome" href="#" onclick="anichange('#manual'); return false">Информация</a>
+			</td>
 		</tr>
 
 		<tr>
@@ -67,12 +92,24 @@
 			$(this).html('');});
 		})
 		
+		function anichange (objName) {
+		  if ( $(objName).css('display') == 'none' ) {
+			$(objName).animate({height: 'show'}, 400);
+		  } else {
+			$(objName).animate({height: 'hide'}, 200);
+		  }
+		}
+		
 		function add_new_item(id) {
 			if(id == 'transfer_data') {
 				$('<tr><td><input type="text" name="tr_variable[]" /></td><td><input type="text" name="tr_value[]" /></td><td>&nbsp;</td></tr>').fadeIn('slow').appendTo('#transfer_data');
 			}
 		}
 	</script>
+	
+	<div id="manual" style="display: none">
+		{manual}
+	</div>
 	
 	<p align="center"><input class="button" type="submit" name="submit" value="Сохранить" /></p>
 

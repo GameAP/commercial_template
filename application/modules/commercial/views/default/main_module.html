@@ -15,3 +15,50 @@
 		<td width="20%">&nbsp;</td>
 	</tr>
 </table>
+
+<?php if (!empty($this->_ci_cached_vars['wa_services_list'])): ?>
+<p class="hr">Услуги клиентов, ожидающие активации</p>
+<table width="100%" class="zebra">
+	<tbody>
+		<th width="25%">Название</th>
+		<th>Дата создания</th>
+		<th>Дата окончания</th>
+		<th>Сумма</th>
+		<th>&nbsp;</th>
+	</tbody>
+{wa_services_list}
+	<tr>
+		<td>{service_name}</td>
+		<td>{date_create}</td>
+		<td>{date_overdue}</td>
+		<td>{cost} руб.</td>
+		<td align="center">
+			<a class="small awesome" href="{site_url}commercial/adm_clients/edit_service/{service_id}/{user_id}">{lang_edit}</a>&nbsp;
+		</td>
+	</tr>
+{/wa_services_list}
+</table>
+<?php endif; ?>
+<?php if (!empty($this->_ci_cached_vars['pr_services_list'])): ?>
+<p class="hr">Услуги клиентов, требующие продления</p>
+<table width="100%" class="zebra">
+	<tbody>
+		<th width="25%">Название</th>
+		<th>Дата создания</th>
+		<th>Дата окончания</th>
+		<th>Сумма</th>
+		<th>&nbsp;</th>
+	</tbody>
+{pr_services_list}
+	<tr>
+		<td>{service_name}</td>
+		<td>{date_create}</td>
+		<td>{date_overdue}</td>
+		<td>{cost} руб.</td>
+		<td align="center">
+			<a class="small awesome" href="{site_url}commercial/adm_clients/edit_service/{service_id}/{user_id}">{lang_edit}</a>&nbsp;
+		</td>
+	</tr>
+{/pr_services_list}
+</table>
+<?php endif; ?>
