@@ -1,18 +1,23 @@
-<table width="100%" class="zebra">
-	<tr>
-		<td>Название:</td>
-		<td>{name}</td>
-	</tr>
-	<tr>
-		<td>Количество:</td>
-		<td>{count}</td>
-	</tr>
-	<tr>
-		<td>Цена:</strong></td>
-		<td>{cost} руб.</strong></td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-		<td><a class="green awesome" href="{site_url}commercial/client/payment/{cart_id}">Перейти к оплате</a></td>
-	</tr>
-</table>
+<form id="card_send" action="{site_url}commercial/client/payment/{cart_id}" method="post" accept-charset="utf-8">
+	<input type="hidden" name="{csrf_token_name}" value="{csrf_hash}" />
+
+	<table width="100%" class="zebra">
+		<tr>
+			<td>Название:</td>
+			<td><input style="width:50%;" type="text" name="service_name" value="{client_name} {name}" /></td>
+		</tr>
+		<tr>
+			<td>Количество:</td>
+			<td>{count}</td>
+		</tr>
+		<tr>
+			<td>Цена:</strong></td>
+			<td>{cost} руб.</strong></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><button form="card_send" class="green awesome">Перейти к оплате</button></td>
+		</tr>
+	</table>
+
+</form>

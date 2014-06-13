@@ -1,5 +1,31 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
-<a class="small awesome" href="{site_url}commercial/adm_clients">« Список клиентов</a>
+<a class="awesome" href="{site_url}commercial/adm_clients">« Список клиентов</a>
+
+<script type="text/javascript">
+	function GetIP() {
+		jQuery.ajax({ 
+			url:     '{site_url}ajax/adm_servers/get_ip/' + $("select[name='ds_id']").val(),
+			type:     "GET",
+			dataType: "html",
+			success: function(response) {
+				document.getElementById('ip_dropdown').innerHTML = response; 
+			}, 
+			error: function(response) {
+				document.getElementById('ip_dropdown').innerHTML = "Select other location"; 
+			} 
+		});
+	}
+	
+	$(document).ready(function() {
+			GetIP();
+		
+			$("select[name='ds_id']").change(function() {
+				document.getElementById('ip_dropdown').innerHTML = 'Получение списка IP...';
+				GetIP();
+			});
+			
+		});
+</script>
 
 <p class="hr">Выписать счет</p>
 <form action="{site_url}commercial/adm_clients/add_service/{user_id}" method="post" accept-charset="utf-8">
@@ -25,13 +51,40 @@
 		</tr>
 		
 		<tr>
+			<td>Тариф (Игра): </td>
+			<td>{tariffs_dropdown}</td>
+		</tr>
+		
+		<tr>
+			<td>{lang_dedicated_server}:</td>
+			<td>
+				<select name="ds_id">
+					{ds_list}
+					<option value="{ds_id}">{ds_name}</option>
+					{/ds_list}
+
+				 </select>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>Хост: </td>
+			<td><div id="ip_dropdown"></div></td>
+		</tr>
+		
+		<tr>
+			<td>ID сервера (не обязательно): </td>
+			<td><input type="text" name="server_id" size="10" /></td>
+		</tr>
+		
+		<tr>
 			<td>Стоимость: </td>
 			<td><input type="text" name="price" size="10"/> {currency_symbol}</td>
 		</tr>
 		
 		<tr>
 			<td>Истекает:</td>
-			<td><input type="text" name="date_overdue" value="{date}"/><br />Пример: 29-06-2013 12:32</td>
+			<td><input type="text" id="datetimepicker1" name="date_overdue" value="{date}"/><br />Пример: 29-06-2013 12:32</td>
 		</tr>
 		
 		<tr>
@@ -45,5 +98,12 @@
 		</tr>
 
 	</table>
-	<p align="center"><input class="button" type="submit" name="submit" value="Выписать" /></p>
+	<p align="center"><input class="button" type="submit" name="submit" value="{lang_add}" /></p>
 </form>
+
+<script>
+	jQuery('#datetimepicker1').datetimepicker({
+	  format:'d-m-Y H:i',
+	  lang:'{language}',
+	});
+</script>

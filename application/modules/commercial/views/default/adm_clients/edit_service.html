@@ -8,16 +8,27 @@
 
 	<table width="100%" class="zebra">
 		<tr>
+			<td>Клиент:</td>
+			<td><a href="{site_url}commercial/adm_clients/view/{user_id}">{user_login}</a></td>
+		</tr>
+		
+		<tr>
 			<td>Название:</td>
 			<td><input type="text" name="name" value="{name}"/></td>
 		</tr>
+		
 		<tr>
 			<td>Цена:</td>
 			<td><input type="text" name="price" value="{price}"/> руб.</td>
 		</tr>
 		<tr>
 			<td>ID сервера:</td>
-			<td><input type="text" name="server_id" value="{server_id}"/></td>
+			<td>
+				<input type="text" name="server_id" value="{server_id}"/>
+				<?php if($this->_ci_cached_vars['server_id']): ?>
+				<a class="small awesome" href="{site_url}admin/server_control/main/{server_id}">Перейти</a>&nbsp;
+				<?php endif; ?>
+			</td>
 		</tr>
 		<tr>
 			<td>Статус:</td>
@@ -25,11 +36,11 @@
 		</tr>
 		<tr>
 			<td>Создан:</td>
-			<td><input type="text" name="date_create" value="{date_create}"/></td>
+			<td><input type="text" id="datetimepicker1" name="date_create" value="{date_create}"/></td>
 		</tr>
 		<tr>
 			<td>Истекает:</td>
-			<td><input type="text" name="date_overdue" value="{date_overdue}"/></td>
+			<td><input type="text" id="datetimepicker2" name="date_overdue" value="{date_overdue}"/></td>
 		</tr>
 	</table>
 	
@@ -46,3 +57,10 @@
 	<p align="center"></p><input class="button" type="submit" name="edit_ds" value="{lang_save}" /></p>
 	
 </form>
+
+<script>
+	jQuery('#datetimepicker1, #datetimepicker2').datetimepicker({
+	  format:'d-m-Y H:i',
+	  lang:'{language}',
+	});
+</script>

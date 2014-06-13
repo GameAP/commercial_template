@@ -1,6 +1,32 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <a class="awesome" href="{site_url}commercial/adm_ftp_accounts">« Список аккаунтов</a>
 
+<script type="text/javascript">
+	function GetIP() {
+		jQuery.ajax({ 
+			url:     '{site_url}ajax/adm_servers/get_ip/' + $("select[name='ds_id']").val(),
+			type:     "GET",
+			dataType: "html",
+			success: function(response) {
+				document.getElementById('ip_dropdown').innerHTML = response; 
+			}, 
+			error: function(response) {
+				document.getElementById('ip_dropdown').innerHTML = "Select other location"; 
+			} 
+		});
+	}
+	
+	$(document).ready(function() {
+			GetIP();
+		
+			$("select[name='ds_id']").change(function() {
+				document.getElementById('ip_dropdown').innerHTML = 'Получение списка IP...';
+				GetIP();
+			});
+			
+		});
+</script>
+
 <p class="hr">Новый ftp аккаунт</p>
 <form action="{site_url}commercial/adm_ftp_accounts/add" method="post" accept-charset="utf-8">
 	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
@@ -18,15 +44,15 @@
 				 </select>
 			</td>
 		</tr>
+
+		<tr>
+			<td>Хост: </td>
+			<td><div id="ip_dropdown"></div></td>
+		</tr>
 		
 		<tr>
 			<td>Клиент (логин):</td>
 			<td><input type="text" name="user_name"/></td>
-		</tr>
-		
-		<tr>
-			<td>Хост: </td>
-			<td><input type="text" name="host"/></td>
 		</tr>
 		
 		<tr>
