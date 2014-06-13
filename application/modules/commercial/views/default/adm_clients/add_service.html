@@ -16,12 +16,32 @@
 		});
 	}
 	
+	function GetMods() {
+		jQuery.ajax({ 
+			url:     '{site_url}commercial/billing_ajax/get_mods_dropdown/' + $("select[name='tariff_id']").val(),
+			type:     "GET",
+			dataType: "html",
+			success: function(response) {
+				document.getElementById('mods_dropdown').innerHTML = response; 
+			}, 
+			error: function(response) {
+				document.getElementById('mods_dropdown').innerHTML = "Select other tariff"; 
+			} 
+		});
+	}
+	
 	$(document).ready(function() {
 			GetIP();
+			GetMods();
 		
 			$("select[name='ds_id']").change(function() {
 				document.getElementById('ip_dropdown').innerHTML = 'Получение списка IP...';
 				GetIP();
+			});
+			
+			$("select[name='tariff_id']").change(function() {
+				document.getElementById('mods_dropdown').innerHTML = 'Получение списка модификаций...';
+				GetMods();
 			});
 			
 		});
@@ -53,6 +73,11 @@
 		<tr>
 			<td>Тариф (Игра): </td>
 			<td>{tariffs_dropdown}</td>
+		</tr>
+		
+		<tr>
+			<td>ID модификации: </td>
+			<td><div id="mods_dropdown"></div></td>
 		</tr>
 		
 		<tr>
