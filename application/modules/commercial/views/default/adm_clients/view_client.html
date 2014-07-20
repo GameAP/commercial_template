@@ -28,6 +28,11 @@
 		<td>Счета (всего/неоплаченных):</td>
 		<td>{user_invoices_count} / {user_unpaid_invoices_count}</td>
 	</tr>
+	
+	<tr>
+		<td>Партнер:</td>
+		<td><a href="{partner_profile}">{partner_login}</a></td>
+	</tr>
 
 </table>
 
@@ -95,4 +100,60 @@
 
 	</tr>
 {/invoices_list}
+</table>
+
+<p class="hr">FTP аккаунты клиента</p>
+<a class="awesome" href="{site_url}commercial/adm_ftp_accounts/add/{user_login}">Добавить</a><br /><br />
+<table width="100%" class="zebra">
+	<tr>
+		<td><strong>Логин</strong></td>
+		<td><strong>Хост</strong></td>
+		<td></td>
+	</tr>
+{ftp_list}
+	<tr>
+		<td>{ftp_login}</td>
+		<td>{ftp_host}</td>
+		<td>
+			<a class="small awesome" href="{site_url}commercial/adm_ftp_accounts/edit/{ftp_id}">Редактировать</a>&nbsp;
+			<a class="small red awesome" href="{site_url}commercial/adm_ftp_accounts/delete/{ftp_id}">X</a>
+		</td>
+
+	</tr>
+{/ftp_list}
+</table>
+
+<p class="hr">Привлеченные клиенты ({referals_count})</p>
+<table width="100%" class="zebra">
+	<tr>
+		<td><strong>Логин</strong></td>
+		<td><strong>Баланс</strong></td>
+		<td></td>
+	</tr>
+{referals_list}
+	<tr>
+		<td>{referal_login}</td>
+		<td>{referal_balance}</td>
+		<td>
+			<a class="small awesome" href="{site_url}commercial/adm_clients/view/{referal_id}">Подробности</a>
+		</td>
+
+	</tr>
+{/referals_list}
+</table>
+
+<p class="hr">Вопросы клиента</p>
+<table width="100%" class="zebra">
+		<th width="35%">Заголовок</th>
+		<th>Последний ответ</th>
+		<th width="35%">Последний ответ</th>
+		<th></th>
+{tickets_list}
+	<tr>
+		<td><strong></strong>{ticket_title}</strong></td>
+		<td>{ticket_last_answer}</td>
+		<td>{ticket_last_date}</td>
+		<td><a class="small awesome" href="{site_url}commercial/tickets/view/{ticket_id}">Просмотр</a></td>
+	</tr>
+{/tickets_list}
 </table>
