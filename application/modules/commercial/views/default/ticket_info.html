@@ -1,6 +1,7 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <script type="text/javascript" language="javascript" src="{site_url}themes/system/ckeditor/ckeditor.js"></script>
-<a class="awesome" href="{site_url}commercial/tickets">« Вернуться</a><br /><br />
+<a class="awesome" href="{site_url}commercial/tickets">« Вернуться</a><br />
+	<p class="hr">{parent_ticket_title}</p>
 
 	{tickets_list}
 	<table width="100%" class="zebra">
@@ -14,10 +15,6 @@
 		</tr>
 		
 		<tr>
-			<td><strong>{ticket_title}</strong></p></td>
-		</tr>
-		
-		<tr>
 			<td><p>&nbsp;&nbsp;{ticket_message}</p></td>
 		</tr>
 	</table>
@@ -27,14 +24,9 @@
 <?php if (!$this->_ci_cached_vars['ticket_closed']): ?>
 <form action="{site_url}commercial/tickets/add/{parent_ticket_id}" method="post" accept-charset="utf-8">
 	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
-	
+
 	<p class="hr">Ответ</p>
 	<table width="100%" class="zebra">
-			<tr>
-				<td>Заголовок</td>
-				<td><input style="width: 75%" type="text" name="title" value="{parent_ticket_title}"/></td>
-			</tr>
-			
 			<tr>
 				<td>Сообщение</td>
 				<td><textarea style="height: 50px" name="message"></textarea></td>
