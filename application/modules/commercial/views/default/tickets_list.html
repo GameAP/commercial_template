@@ -13,7 +13,10 @@
 		<td><strong></strong>{ticket_title}</strong></td>
 		<td>{ticket_last_answer}</td>
 		<td>{ticket_last_date}</td>
-		<td><a class="small awesome" href="{site_url}commercial/tickets/view/{ticket_id}">Просмотр</a></td>
+		<td>
+			<a class="small awesome" href="{site_url}commercial/tickets/view/{ticket_id}">Просмотр</a>&nbsp;
+			<a class="red small awesome" href="{site_url}commercial/tickets/delete/{ticket_id}">X</a>
+		</td>
 	</tr>
 {/tickets_list}
 </table>

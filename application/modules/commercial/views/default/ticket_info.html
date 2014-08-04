@@ -17,6 +17,11 @@
 		<tr>
 			<td><p>&nbsp;&nbsp;{ticket_message}</p></td>
 		</tr>
+		<?php if ($this->users->auth_data['is_admin']): ?>
+		<tr>
+			<td><a href="{site_url}commercial/tickets/edit/{ticket_id}">{lang_edit}</a>&nbsp;|&nbsp;<a href="{site_url}commercial/tickets/delete/{ticket_id}">{lang_delete}</a></td>
+		</tr>
+		<?php endif; ?>
 	</table>
 	<hr />
 	{/tickets_list}
