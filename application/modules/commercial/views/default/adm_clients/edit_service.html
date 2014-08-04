@@ -22,6 +22,10 @@
 			<td><input type="text" name="price" value="{price}"/> руб.</td>
 		</tr>
 		<tr>
+			<td>Выделенный сервер:</td>
+			<td>{ds_link}</td>
+		</tr>
+		<tr>
 			<td>ID сервера:</td>
 			<td>
 				<input type="text" name="server_id" value="{server_id}"/>
@@ -29,6 +33,10 @@
 				<a class="small awesome" href="{site_url}admin/server_control/main/{server_id}">Перейти</a>&nbsp;
 				<?php endif; ?>
 			</td>
+		</tr>
+		<tr>
+			<td>Модификация:</td>
+			<td>{checkbox_mods}</td>
 		</tr>
 		<tr>
 			<td>Статус:</td>
